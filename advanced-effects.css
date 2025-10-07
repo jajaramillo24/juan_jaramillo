@@ -1,0 +1,675 @@
+/* Advanced Effects CSS - Magic Bento, Logo Loop, Scroll Stack, Gradual Blur */
+
+/* Logo Loop Component */
+.logo-loop-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.1) 50%, transparent 100%);
+    border-radius: 20px;
+    margin: 40px 0;
+}
+
+.logo-loop-track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    animation: logoLoop 20s linear infinite;
+    will-change: transform;
+}
+
+.logo-loop-track:hover {
+    animation-play-state: paused;
+}
+
+.logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-item:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    border-color: var(--primary-color);
+}
+
+.logo-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.logo-item:hover::before {
+    left: 100%;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.logo-item:hover .logo-icon {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+@keyframes logoLoop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Gradual Blur Component */
+.gradual-blur-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.gradual-blur-content {
+    height: 100%;
+    overflow-y: auto;
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.gradual-blur-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6rem;
+    background: linear-gradient(
+        to top,
+        var(--bg-primary) 0%,
+        rgba(10, 10, 10, 0.8) 20%,
+        rgba(10, 10, 10, 0.4) 40%,
+        rgba(10, 10, 10, 0.1) 60%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Scroll Stack Component */
+.scroll-stack-scroller {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: visible;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: scroll-position;
+}
+
+.scroll-stack-inner {
+    padding: 20vh 5rem 50rem;
+    min-height: 100vh;
+}
+
+.scroll-stack-card-wrapper {
+    position: relative;
+}
+
+.scroll-stack-card {
+    transform-origin: top center;
+    will-change: transform, filter;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    height: 20rem;
+    width: 100%;
+    margin: 30px 0;
+    padding: 3rem;
+    border-radius: 40px;
+    box-sizing: border-box;
+    /* Improve mobile performance */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    position: relative;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    transition: all 0.3s ease;
+}
+
+.scroll-stack-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+}
+
+.scroll-stack-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-primary);
+    border-radius: 42px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-stack-card:hover::before {
+    opacity: 0.3;
+}
+
+.scroll-stack-card h2 {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.scroll-stack-card .timeline-company {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.scroll-stack-card .timeline-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    background: var(--bg-glass);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-glass);
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.scroll-stack-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.scroll-stack-card .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.scroll-stack-card .tag {
+    background: var(--bg-glass);
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-glass);
+    transition: all 0.3s ease;
+}
+
+.scroll-stack-card .tag:hover {
+    background: var(--gradient-primary);
+    transform: translateY(-2px);
+}
+
+.scroll-stack-end {
+    width: 100%;
+    height: 1px;
+}
+
+/* Responsive Scroll Stack */
+@media (max-width: 768px) {
+    .scroll-stack-inner {
+        padding: 10vh 2rem 30rem;
+    }
+    
+    .scroll-stack-card {
+        height: 18rem;
+        padding: 2rem;
+        margin: 20px 0;
+        border-radius: 30px;
+    }
+    
+    .scroll-stack-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .scroll-stack-card .timeline-company {
+        font-size: 1rem;
+    }
+    
+    .scroll-stack-card .timeline-date {
+        font-size: 0.8rem;
+    }
+    
+    .scroll-stack-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-stack-inner {
+        padding: 5vh 1rem 20rem;
+    }
+    
+    .scroll-stack-card {
+        height: 16rem;
+        padding: 1.5rem;
+        margin: 15px 0;
+        border-radius: 25px;
+    }
+    
+    .scroll-stack-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .scroll-stack-card .timeline-company {
+        font-size: 0.9rem;
+    }
+    
+    .scroll-stack-card .timeline-date {
+        font-size: 0.75rem;
+    }
+    
+    .scroll-stack-card p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .scroll-stack-card .tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
+
+/* Magic Bento Component */
+.magic-bento-grid {
+    display: grid;
+    gap: 0.5em;
+    padding: 0.75em;
+    max-width: 54em;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+    margin: 0 auto;
+}
+
+.magic-bento-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    aspect-ratio: 4/3;
+    min-height: 200px;
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25em;
+    border-radius: 20px;
+    border: 1px solid var(--border-glass);
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    font-weight: 300;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    --glow-x: 50%;
+    --glow-y: 50%;
+    --glow-intensity: 0;
+    --glow-radius: 200px;
+}
+
+.magic-bento-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--primary-color);
+}
+
+.magic-bento-card__header,
+.magic-bento-card__content {
+    display: flex;
+    position: relative;
+    color: var(--text-primary);
+    z-index: 2;
+}
+
+.magic-bento-card__header {
+    gap: 0.75em;
+    justify-content: space-between;
+}
+
+.magic-bento-card__content {
+    flex-direction: column;
+}
+
+.magic-bento-card__label {
+    font-size: 0.8rem;
+    background: var(--gradient-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+.magic-bento-card__title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0 0 0.5em;
+    color: var(--text-primary);
+}
+
+.magic-bento-card__description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    opacity: 0.8;
+    color: var(--text-secondary);
+}
+
+/* Border glow effect for magic bento */
+.magic-bento-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: radial-gradient(
+        var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+        rgba(99, 102, 241, calc(var(--glow-intensity) * 0.8)) 0%,
+        rgba(99, 102, 241, calc(var(--glow-intensity) * 0.4)) 30%,
+        transparent 60%
+    );
+    border-radius: inherit;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    opacity: 0;
+}
+
+.magic-bento-card:hover::after {
+    opacity: 1;
+}
+
+/* Particle effects */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 1);
+    box-shadow: 0 0 6px rgba(99, 102, 241, 0.6);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Global spotlight */
+.global-spotlight {
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle,
+        rgba(99, 102, 241, 0.15) 0%,
+        rgba(99, 102, 241, 0.08) 15%,
+        rgba(99, 102, 241, 0.04) 25%,
+        rgba(99, 102, 241, 0.02) 40%,
+        rgba(99, 102, 241, 0.01) 65%,
+        transparent 70%
+    );
+    z-index: 200;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+}
+
+/* Responsive Magic Bento */
+@media (max-width: 599px) {
+    .magic-bento-grid {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0.5em;
+    }
+
+    .magic-bento-card {
+        width: 100%;
+        min-height: 180px;
+    }
+}
+
+@media (min-width: 600px) {
+    .magic-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .magic-bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .magic-bento-card:nth-child(3) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .magic-bento-card:nth-child(4) {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 2;
+    }
+
+    .magic-bento-card:nth-child(6) {
+        grid-column: 4;
+        grid-row: 3;
+    }
+}
+
+/* Enhanced glass card effects */
+.enhanced-glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow-glass);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.enhanced-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-primary);
+    opacity: 0.5;
+}
+
+.enhanced-glass-card:hover {
+    background: var(--bg-glass-hover);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--primary-color);
+}
+
+.enhanced-glass-card:hover::before {
+    opacity: 1;
+    height: 2px;
+}
+
+/* Magnetic effect */
+.magnetic {
+    transition: transform 0.3s ease;
+}
+
+.magnetic:hover {
+    transform: translateY(-5px);
+}
+
+/* Tilt effect */
+.tilt-effect {
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+/* Ripple effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating {
+    animation: float 8s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+    }
+}
+
+.pulse-glow {
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Text reveal animation */
+.text-reveal {
+    overflow: hidden;
+}
+
+.text-reveal span {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: textReveal 0.8s ease-out forwards;
+}
+
+@keyframes textReveal {
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation delays */
+.text-reveal span:nth-child(1) { animation-delay: 0.1s; }
+.text-reveal span:nth-child(2) { animation-delay: 0.2s; }
+.text-reveal span:nth-child(3) { animation-delay: 0.3s; }
+.text-reveal span:nth-child(4) { animation-delay: 0.4s; }
+.text-reveal span:nth-child(5) { animation-delay: 0.5s; }
+.text-reveal span:nth-child(6) { animation-delay: 0.6s; }
+.text-reveal span:nth-child(7) { animation-delay: 0.7s; }
+.text-reveal span:nth-child(8) { animation-delay: 0.8s; }
+.text-reveal span:nth-child(9) { animation-delay: 0.9s; }
+.text-reveal span:nth-child(10) { animation-delay: 1.0s; }
+
+/* Morphing background */
+.morphing-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.enhanced-glass-card:hover .morphing-bg {
+    opacity: 0.1;
+    transform: scale(1.05);
+}
+
+/* Interactive cursor */
+.interactive-cursor {
+    cursor: none;
+}
+
+.interactive-cursor::before {
+    content: '';
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.interactive-cursor:hover::before {
+    opacity: 1;
+}

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Jaramillo - Interactive CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="advanced-effects.css">
+    <link rel="stylesheet" href="profile-card.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Card Container -->
+    <div class="floating-card-container">
+        <!-- Background Particles -->
+        <div id="particles-js"></div>
+        
+        <!-- Language Switcher -->
+        <div class="language-switcher-top">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">JJ</div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-section="hero">
+                    <i class="fas fa-home"></i>
+                    <span data-translate="nav.home">Home</span>
+                </li>
+                <li class="nav-item" data-section="about">
+                    <i class="fas fa-user"></i>
+                    <span data-translate="nav.about">About</span>
+                </li>
+                <li class="nav-item" data-section="experience">
+                    <i class="fas fa-briefcase"></i>
+                    <span data-translate="nav.experience">Experience</span>
+                </li>
+                <li class="nav-item" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span data-translate="nav.skills">Skills</span>
+                </li>
+                <li class="nav-item" data-section="projects">
+                    <i class="fas fa-laptop-code"></i>
+                    <span data-translate="nav.projects">Projects</span>
+                </li>
+                <li class="nav-item" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span data-translate="nav.contact">Contact</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-container">
+        <!-- Hero Section -->
+        <section id="hero" class="section active">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Juan Jaramillo</span>
+                        </h1>
+                        <p class="hero-subtitle" data-translate="hero.subtitle">Full Stack Developer | Cloud & Mobile Specialist</p>
+                        <p class="hero-description" data-translate="hero.description">
+                            Highly versatile and committed technology professional with solid experience in full stack web and mobile development, and cloud deployment. Expert in multiple modern frontend and backend frameworks, relational databases, .NET + Entity Framework, and cloud architectures in AWS and Azure.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-download"></i>
+                                <span data-translate="hero.download">Download CV</span>
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-rocket"></i>
+                                <span data-translate="hero.projects">View Projects</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-card">
+                            <div class="card-content">
+                                <div class="avatar">
+                                    <div class="avatar-placeholder">JJ</div>
+                                </div>
+                                <div class="card-info">
+                                    <h3 data-translate="hero.available">Available for Work</h3>
+                                    <p data-translate="hero.opportunities">Open to new opportunities</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2 class="section-title" data-translate="about.title">About Me</h2>
+                <p class="section-subtitle" data-translate="about.subtitle">Get to know me better</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass-card">
+                    <div class="card-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 data-translate="about.innovation.title">Innovation</h3>
+                    <p data-translate="about.innovation.description">Always exploring new technologies and creative solutions to complex problems.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-translate="about.collaboration.title">Collaboration</h3>
+                    <p data-translate="about.collaboration.description">Strong believer in teamwork and effective communication for successful projects.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 data-translate="about.growth.title">Growth</h3>
+                    <p data-translate="about.growth.description">Continuously learning and adapting to stay ahead in the fast-paced tech industry.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="section-header">
+                <h2 class="section-title text-reveal" data-translate="experience.title">Experience</h2>
+                <p class="section-subtitle" data-translate="experience.subtitle">My professional journey</p>
+            </div>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <h3 data-translate="experience.jazusoft.title">Full Stack Web Developer</h3>
+                            <span class="timeline-date" data-translate="experience.jazusoft.date">Current</span>
+                        </div>
+                        <p class="timeline-company">Jazusoft</p>
+                        <p class="timeline-description" data-translate="experience.jazusoft.description">
+                            Frontend development with React, Vue, Angular and Ionic. Backend with Django, Laravel and .NET + Entity Framework. SQL Server management, stored procedures and view optimization. Application deployment in Azure (ACR, AKS, App Service) and AWS (Lambda, EC2, S3). CI/CD pipeline implementation and cloud infrastructure configuration.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Angular</span>
+                            <span class="tag">.NET</span>
+                            <span class="tag">Azure</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <h3 data-translate="experience.ubp.title">Research Project Collaborator</h3>
+                            <span class="timeline-date" data-translate="experience.ubp.date">2024</span>
+                        </div>
+                        <p class="timeline-company" data-translate="experience.ubp.company">Universidad Blas Pascal</p>
+                        <p class="timeline-description" data-translate="experience.ubp.description">
+                            Development of a facial gesture recognition application. Wheelchair control through computer vision and facial gestures.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <h3 data-translate="experience.aa2000.title">Systems Engineering Intern</h3>
+                            <span class="timeline-date" data-translate="experience.aa2000.date">2024</span>
+                        </div>
+                        <p class="timeline-company">Aeropuertos Argentina 2000 – Córdoba Airport</p>
+                        <p class="timeline-description" data-translate="experience.aa2000.description">
+                            SITA to VEOVO systems migration. Support and development in airport infrastructure technology.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">Systems Migration</span>
+                            <span class="tag">Infrastructure</span>
+                            <span class="tag">Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2 class="section-title text-reveal" data-translate="skills.title">Skills & Technologies</h2>
+                <p class="section-subtitle" data-translate="skills.subtitle">Technologies I work with</p>
+            </div>
+            
+            <!-- Logo Loop for Technologies -->
+            <div class="logo-loop-container">
+                <!-- Logos will be dynamically generated -->
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category glass-card">
+                    <h3 data-translate="skills.frontend.title">Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Vue.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Angular</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Ionic</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category glass-card">
+                    <h3 data-translate="skills.backend.title">Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">.NET Core</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Django</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Laravel</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category glass-card">
+                    <h3 data-translate="skills.cloud.title">Cloud & DevOps</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Azure</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AWS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CI/CD</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Terraform</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="section-header">
+                <h2 class="section-title text-reveal" data-translate="projects.title">Featured Projects</h2>
+                <p class="section-subtitle" data-translate="projects.subtitle">Some of my recent work</p>
+            </div>
+            
+            <!-- Magic Bento Grid for Projects -->
+            <div class="magic-bento-grid">
+                <div class="magic-bento-card">
+                    <div class="magic-bento-card__header">
+                        <div class="magic-bento-card__label">E-Commerce</div>
+                    </div>
+                    <div class="magic-bento-card__content">
+                        <h2 class="magic-bento-card__title">E-Commerce Platform</h2>
+                        <p class="magic-bento-card__description">Modern e-commerce solution with real-time inventory management and payment processing.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Stripe</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="magic-bento-card">
+                    <div class="magic-bento-card__header">
+                        <div class="magic-bento-card__label">Analytics</div>
+                    </div>
+                    <div class="magic-bento-card__content">
+                        <h2 class="magic-bento-card__title">Analytics Dashboard</h2>
+                        <p class="magic-bento-card__description">Real-time data visualization dashboard with interactive charts and custom reporting.</p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="magic-bento-card">
+                    <div class="magic-bento-card__header">
+                        <div class="magic-bento-card__label">Mobile</div>
+                    </div>
+                    <div class="magic-bento-card__content">
+                        <h2 class="magic-bento-card__title">Mobile App</h2>
+                        <p class="magic-bento-card__description">Cross-platform mobile application with offline capabilities and push notifications.</p>
+                        <div class="project-tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Redux</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="magic-bento-card">
+                    <div class="magic-bento-card__header">
+                        <div class="magic-bento-card__label">AI/ML</div>
+                    </div>
+                    <div class="magic-bento-card__content">
+                        <h2 class="magic-bento-card__title">Facial Recognition</h2>
+                        <p class="magic-bento-card__description">Computer vision application for facial gesture recognition and wheelchair control.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">AI/ML</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="magic-bento-card">
+                    <div class="magic-bento-card__header">
+                        <div class="magic-bento-card__label">Cloud</div>
+                    </div>
+                    <div class="magic-bento-card__content">
+                        <h2 class="magic-bento-card__title">Cloud Infrastructure</h2>
+                        <p class="magic-bento-card__description">Scalable cloud architecture with CI/CD pipelines and automated deployment.</p>
+                        <div class="project-tags">
+                            <span class="tag">Azure</span>
+                            <span class="tag">AWS</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="magic-bento-card">
+                    <div class="magic-bento-card__header">
+                        <div class="magic-bento-card__label">Full Stack</div>
+                    </div>
+                    <div class="magic-bento-card__content">
+                        <h2 class="magic-bento-card__title">Full Stack App</h2>
+                        <p class="magic-bento-card__description">Complete full stack application with modern architecture and best practices.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">.NET</span>
+                            <span class="tag">SQL Server</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <h2 class="section-title" data-translate="contact.title">Get In Touch</h2>
+                <p class="section-subtitle" data-translate="contact.subtitle">Let's work together</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info glass-card">
+                    <h3 data-translate="contact.info.title">Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>jjuanandres4@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+54 9 351 786 6940</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span data-translate="contact.location">Córdoba, Argentina</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/juanjjaramillo" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form glass-card">
+                    <h3 data-translate="contact.form.title">Send Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" data-translate-placeholder="contact.form.name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" data-translate-placeholder="contact.form.email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea data-translate-placeholder="contact.form.message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-translate="contact.form.send">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Profile Card root (injected/controlled by profile-card.js) -->
+    <div id="profile-card-root" aria-hidden="true"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="profile-card.js"></script>
+    <script src="script.js"></script>
+    <script src="advanced-effects.js"></script>
+</body>
+</html>
