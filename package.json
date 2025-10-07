@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://juanjaramillo.github.io/Mates",
+  "homepage": "https://jajaramillo24.github.io/juan_jaramillo",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
