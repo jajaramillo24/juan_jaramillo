@@ -24,7 +24,14 @@ function App() {
   const scrollToSection = (sectionId) => {
     const section = sectionsRef.current[sectionId]
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // Usar requestAnimationFrame para mejor rendimiento
+      requestAnimationFrame(() => {
+        section.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        })
+      })
     }
   }
 
@@ -32,13 +39,19 @@ function App() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-            setCurrentSection(entry.target.id)
-          }
+        // Usar requestAnimationFrame para evitar bloqueo del hilo principal
+        requestAnimationFrame(() => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+              setCurrentSection(entry.target.id)
+            }
+          })
         })
       },
-      { threshold: [0.3], rootMargin: '0px' }
+      { 
+        threshold: [0.3], 
+        rootMargin: '0px'
+      }
     )
 
     Object.values(sectionsRef.current).forEach((section) => {

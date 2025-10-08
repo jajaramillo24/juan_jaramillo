@@ -34,11 +34,19 @@
   justify-content: center;
   z-index: 10000;
   animation: fadeIn 0.3s ease-out;
+  padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .profile-card-content {
   position: relative;
   animation: slideInUp 0.4s ease-out;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .close-btn {
@@ -167,6 +175,7 @@
   padding: 4px;
   z-index: 1001;
   box-shadow: var(--shadow-glass);
+  margin: 10px;
 }
 
 .lang-btn {
@@ -294,10 +303,11 @@
   z-index: 1;
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
-  /* Optimización de scroll */
+  /* Optimización de scroll mejorada */
   -webkit-overflow-scrolling: touch;
   transform: translateZ(0);
   will-change: scroll-position;
+  overscroll-behavior-y: contain;
 }
 
 .content-container {
@@ -314,6 +324,9 @@
   scroll-snap-stop: normal;
   padding: 40px 0;
   animation: fadeIn 0.8s ease-out;
+  /* Optimización adicional */
+  contain: layout style paint;
+  content-visibility: auto;
 }
 
 .section-header {
@@ -1111,6 +1124,8 @@
   .main-content {
     left: 80px;
     padding: 20px;
+    /* Scroll más fluido en móvil */
+    scroll-behavior: auto;
   }
 
   .hero-title {
@@ -1133,6 +1148,30 @@
 
   .section-title {
     font-size: 2rem;
+  }
+
+  /* Mejoras para Language Switcher en móvil */
+  .language-switcher-top {
+    top: 15px;
+    right: 15px;
+    margin: 8px;
+  }
+
+  /* Mejoras para Profile Card Modal en móvil */
+  .profile-card-modal {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
   }
 
   .about-grid {
@@ -1177,6 +1216,20 @@
 
   .main-content {
     left: 0;
+    padding: 15px;
+  }
+
+  /* Ajuste del Language Switcher en pantallas pequeñas */
+  .language-switcher-top {
+    top: 10px;
+    right: 10px;
+    margin: 5px;
+    padding: 3px;
+  }
+
+  .lang-btn {
+    padding: 6px 10px;
+    font-size: 11px;
   }
 
   .hero-title {
@@ -1227,5 +1280,20 @@
   .contact-info h3,
   .contact-form h3 {
     font-size: 1.3rem;
+  }
+
+  /* Mejoras adicionales para Profile Card en móvil pequeño */
+  .profile-card-modal {
+    padding: 5px;
+    padding-top: 50px;
+  }
+
+  .profile-card-content {
+    width: 100%;
+  }
+
+  .close-btn {
+    top: 5px;
+    right: 5px;
   }
 }
