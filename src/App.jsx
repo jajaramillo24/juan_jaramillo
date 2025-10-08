@@ -1,16 +1,24 @@
 import { useState, useEffect, useRef } from 'react'
 import ProfileCard from './components/ProfileCard'
-import LiquidEther from './components/LiquidEther'
+import SmokeBackground from './components/SmokeBackground'
+import { translations } from './translations'
 import './App.css'
 
 function App() {
   const [showCard, setShowCard] = useState(false)
   const [currentSection, setCurrentSection] = useState('hero')
+  const [language, setLanguage] = useState('en')
   const sectionsRef = useRef({})
+  
+  const t = translations[language]
 
   const handleContactClick = () => {
     setShowCard(false)
     scrollToSection('contact')
+  }
+  
+  const changeLanguage = (lang) => {
+    setLanguage(lang)
   }
 
   const scrollToSection = (sectionId) => {
@@ -41,36 +49,18 @@ function App() {
   }, [])
 
   const navItems = [
-    { id: 'hero', icon: 'fa-home', label: 'Home' },
-    { id: 'about', icon: 'fa-user', label: 'About' },
-    { id: 'experience', icon: 'fa-briefcase', label: 'Experience' },
-    { id: 'skills', icon: 'fa-code', label: 'Skills' },
-    { id: 'projects', icon: 'fa-laptop-code', label: 'Projects' },
-    { id: 'contact', icon: 'fa-envelope', label: 'Contact' }
+    { id: 'hero', icon: 'fa-home', label: t.menu.home },
+    { id: 'about', icon: 'fa-user', label: t.menu.about },
+    { id: 'experience', icon: 'fa-briefcase', label: t.menu.experience },
+    { id: 'skills', icon: 'fa-code', label: t.menu.skills },
+    { id: 'projects', icon: 'fa-laptop-code', label: t.menu.projects },
+    { id: 'contact', icon: 'fa-envelope', label: t.menu.contact }
   ]
 
   return (
     <div className="app-container">
-      {/* Liquid Ether Background - Negro con Violeta - OPTIMIZADO */}
-      <div className="liquid-ether-background">
-        <LiquidEther
-          colors={['#1a0033', '#6366f1', '#a855f7', '#000000']}
-          mouseForce={20}
-          cursorSize={100}
-          isViscous={false}
-          viscous={20}
-          iterationsViscous={16}
-          iterationsPoisson={16}
-          resolution={0.75}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.25}
-          autoIntensity={1.5}
-          takeoverDuration={0.3}
-          autoResumeDelay={2000}
-          autoRampDuration={0.8}
-        />
-      </div>
+      {/* Smoke Background */}
+      <SmokeBackground />
 
       {/* Profile Card Modal */}
       {showCard && (
@@ -80,12 +70,12 @@ function App() {
           <div className="profile-card-content">
             <button className="close-btn" onClick={() => setShowCard(false)}>✕</button>
             <ProfileCard
-              name="Juan Jaramillo"
-              title="Full Stack Developer"
-              handle="juanjjaramillo"
-              status="Available for Work"
-              contactText="Contact Me"
-              avatarUrl="/avatar.jpg"
+              name={t.hero.name}
+              title={t.profileCard.title}
+              handle={t.profileCard.handle}
+              status={t.profileCard.status}
+              contactText={t.profileCard.contactMe}
+              avatarUrl="https://raw.githubusercontent.com/jajaramillo24/juan_jaramillo/main/public/avatar.jpg"
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}
@@ -102,8 +92,18 @@ function App() {
         
         {/* Language Switcher */}
         <div className="language-switcher-top">
-          <button className="lang-btn active">EN</button>
-          <button className="lang-btn">ES</button>
+          <button 
+            className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+            onClick={() => changeLanguage('en')}
+          >
+            EN
+          </button>
+          <button 
+            className={`lang-btn ${language === 'es' ? 'active' : ''}`}
+            onClick={() => changeLanguage('es')}
+          >
+            ES
+          </button>
         </div>
 
         {/* Navigation Sidebar */}
@@ -138,32 +138,36 @@ function App() {
                 <div className="hero-content">
                   <div className="hero-text">
                     <h1 className="hero-title">
-                      <span className="gradient-text">Juan Jaramillo</span>
+                      <span className="gradient-text">{t.hero.name}</span>
                     </h1>
-                    <p className="hero-subtitle">Full Stack Developer | Cloud & Mobile Specialist</p>
+                    <p className="hero-subtitle">{t.hero.subtitle}</p>
                     <p className="hero-description">
-                      Highly versatile and committed technology professional with solid experience in full stack web and mobile development, and cloud deployment. Expert in multiple modern frontend and backend frameworks, relational databases, .NET + Entity Framework, and cloud architectures in AWS and Azure.
+                      {t.hero.description}
                     </p>
                     <div className="hero-buttons">
                       <button className="btn btn-primary">
                         <i className="fas fa-download"></i>
-                        Download CV
+                        {t.hero.downloadCV}
                       </button>
                       <button className="btn btn-secondary" onClick={() => scrollToSection('projects')}>
                         <i className="fas fa-rocket"></i>
-                        View Projects
+                        {t.hero.viewProjects}
                       </button>
                     </div>
                   </div>
                   <div className="hero-visual">
-                    <div className="floating-card">
+                    <div className="floating-card" onClick={() => setShowCard(true)} style={{ cursor: 'pointer' }}>
                       <div className="card-content">
                         <div className="avatar">
-                          <div className="avatar-placeholder">JJ</div>
+                          <img 
+                            src="https://raw.githubusercontent.com/jajaramillo24/juan_jaramillo/main/public/avatar.jpg" 
+                            alt="Profile Avatar"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                          />
                         </div>
                         <div className="card-info">
-                          <h3>Available for Work</h3>
-                          <p>Open to new opportunities</p>
+                          <h3>{t.hero.availableForWork}</h3>
+                          <p>{t.hero.openToOpportunities}</p>
                         </div>
                       </div>
                     </div>
@@ -179,19 +183,19 @@ function App() {
               ref={(el) => (sectionsRef.current.about = el)}
             >
               <div className="section-header">
-                <h2 className="section-title">About Me</h2>
-                <p className="section-subtitle">Get to know me better</p>
+                <h2 className="section-title">{t.about.title}</h2>
+                <p className="section-subtitle">{t.about.subtitle}</p>
               </div>
               <div className="about-grid">
                 {[
-                  { icon: 'fa-lightbulb', title: 'Innovation', desc: 'Always exploring new technologies and creative solutions to complex problems.' },
-                  { icon: 'fa-users', title: 'Collaboration', desc: 'Strong believer in teamwork and effective communication for successful projects.' },
-                  { icon: 'fa-chart-line', title: 'Growth', desc: 'Continuously learning and adapting to stay ahead in the fast-paced tech industry.' }
+                  { icon: 'fa-lightbulb', key: 'innovation' },
+                  { icon: 'fa-users', key: 'collaboration' },
+                  { icon: 'fa-chart-line', key: 'growth' }
                 ].map((card, i) => (
                   <div key={i} className="about-card glass-card">
                     <div className="card-icon"><i className={`fas ${card.icon}`}></i></div>
-                    <h3>{card.title}</h3>
-                    <p>{card.desc}</p>
+                    <h3>{t.about.cards[card.key].title}</h3>
+                    <p>{t.about.cards[card.key].desc}</p>
                   </div>
                 ))}
               </div>
@@ -204,8 +208,8 @@ function App() {
               ref={(el) => (sectionsRef.current.experience = el)}
             >
               <div className="section-header">
-                <h2 className="section-title">Experience</h2>
-                <p className="section-subtitle">My professional journey</p>
+                <h2 className="section-title">{t.experience.title}</h2>
+                <p className="section-subtitle">{t.experience.subtitle}</p>
               </div>
               <div className="experience-timeline">
                 <div className="timeline-item">
@@ -275,8 +279,8 @@ function App() {
               ref={(el) => (sectionsRef.current.skills = el)}
             >
               <div className="section-header">
-                <h2 className="section-title">Skills & Technologies</h2>
-                <p className="section-subtitle">Technologies I work with</p>
+                <h2 className="section-title">{t.skills.title}</h2>
+                <p className="section-subtitle">{t.skills.subtitle}</p>
               </div>
               <div className="skills-grid">
                 <div className="skill-category glass-card">
@@ -343,8 +347,8 @@ function App() {
               ref={(el) => (sectionsRef.current.projects = el)}
             >
               <div className="section-header">
-                <h2 className="section-title">Featured Projects</h2>
-                <p className="section-subtitle">Some of my recent work</p>
+                <h2 className="section-title">{t.projects.title}</h2>
+                <p className="section-subtitle">{t.projects.subtitle}</p>
               </div>
               <div className="projects-grid">
                 {[
@@ -416,8 +420,8 @@ function App() {
               ref={(el) => (sectionsRef.current.contact = el)}
             >
               <div className="section-header">
-                <h2 className="section-title">Get In Touch</h2>
-                <p className="section-subtitle">Let's work together</p>
+                <h2 className="section-title">{t.contact.title}</h2>
+                <p className="section-subtitle">{t.contact.subtitle}</p>
               </div>
               <div className="contact-container">
                 <div className="contact-info glass-card">

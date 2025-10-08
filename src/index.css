@@ -6,19 +6,28 @@
 }
 
 :root {
-  --primary-color: #6366f1;
-  --secondary-color: #8b5cf6;
-  --accent-color: #06b6d4;
-  --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #18181b;
-  --bg-glass: rgba(255, 255, 255, 0.1);
-  --bg-glass-hover: rgba(255, 255, 255, 0.15);
-  --border-glass: rgba(255, 255, 255, 0.2);
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  /* Paleta Principal - Tonos Violeta Armónicos */
+  --primary-color: #8b5cf6;
+  --secondary-color: #a855f7;
+  --accent-color: #c084fc;
+  
+  /* Textos */
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  
+  /* Fondos */
+  --bg-primary: #000000;
+  --bg-secondary: #0a0012;
+  
+  /* Glass Effect - Tonos Violeta Sutiles */
+  --bg-glass: rgba(139, 92, 246, 0.08);
+  --bg-glass-hover: rgba(168, 85, 247, 0.15);
+  --border-glass: rgba(139, 92, 246, 0.25);
+  --shadow-glass: 0 8px 32px rgba(139, 92, 246, 0.15);
+  
+  /* Gradiente Principal - Violeta Cohesivo */
+  --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
 }
 
 body {

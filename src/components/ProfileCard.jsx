@@ -24,7 +24,7 @@ const adjust = (value, fromMin, fromMax, toMin, toMax) =>
 const easeInOutCubic = x => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
 const ProfileCardComponent = ({
-  avatarUrl = '/avatar.jpg',
+  avatarUrl = 'https://raw.githubusercontent.com/jajaramillo24/juan_jaramillo/main/public/avatar.jpg',
   iconUrl = '',
   grainUrl = '',
   behindGradient,
@@ -255,6 +255,12 @@ const ProfileCardComponent = ({
         <div className="pc-inside">
           <div className="pc-shine" />
           <div className="pc-glare" />
+          <div className="pc-content pc-header-content">
+            <div className="pc-details">
+              <h3>{name}</h3>
+              <p>{title}</p>
+            </div>
+          </div>
           <div className="pc-content pc-avatar-content">
             <img
               className="avatar"
@@ -302,12 +308,6 @@ const ProfileCardComponent = ({
                 </button>
               </div>
             )}
-          </div>
-          <div className="pc-content">
-            <div className="pc-details">
-              <h3>{name}</h3>
-              <p>{title}</p>
-            </div>
           </div>
         </div>
       </section>
