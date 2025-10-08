@@ -47,6 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10001;
 }
 
 .close-btn {
@@ -65,7 +66,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  z-index: 10001;
+  z-index: 10002;
 }
 
 .close-btn:hover {
@@ -165,17 +166,25 @@
 /* Language Switcher */
 .language-switcher-top {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 30px;
   display: flex;
-  background: rgba(10, 0, 18, 0.85);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-glass);
+  background: rgba(10, 0, 18, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: 12px;
   padding: 4px;
   z-index: 1001;
-  box-shadow: var(--shadow-glass);
-  margin: 10px;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
+  gap: 2px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.language-switcher-top.hide-on-modal {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .lang-btn {
@@ -1130,6 +1139,15 @@
 
   .hero-title {
     font-size: 2.5rem;
+    padding: top 45px;
+  }
+
+  .hero-subtitle {
+    padding-top: 45px;
+  }
+
+  .hero-description {
+    padding-top: 45px;
   }
 
   .hero-content {
@@ -1144,6 +1162,7 @@
 
   .hero-text {
     order: 0;
+    padding-top: 5px;
   }
 
   .section-title {
@@ -1152,9 +1171,9 @@
 
   /* Mejoras para Language Switcher en móvil */
   .language-switcher-top {
-    top: 15px;
-    right: 15px;
-    margin: 8px;
+    top: 20px;
+    right: 20px;
+    padding: 3px;
   }
 
   /* Mejoras para Profile Card Modal en móvil */
@@ -1221,9 +1240,8 @@
 
   /* Ajuste del Language Switcher en pantallas pequeñas */
   .language-switcher-top {
-    top: 10px;
-    right: 10px;
-    margin: 5px;
+    top: 15px;
+    right: 15px;
     padding: 3px;
   }
 
@@ -1234,14 +1252,17 @@
 
   .hero-title {
     font-size: 2rem;
+    padding-top: 5px;
   }
 
   .hero-subtitle {
     font-size: 1.2rem;
+    padding-top: 5px;
   }
 
   .hero-description {
     font-size: 1rem;
+    padding-top: 5px;
   }
 
   .section-title {

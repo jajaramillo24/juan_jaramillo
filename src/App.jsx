@@ -99,12 +99,12 @@ function App() {
       )}
 
       {/* Main Layout */}
-      <div className="floating-card-container">
+      <div className={`floating-card-container ${showCard ? 'modal-open' : ''}`}>
         {/* Background Particles */}
         <div className="particles-bg"></div>
         
         {/* Language Switcher */}
-        <div className="language-switcher-top">
+        <div className={`language-switcher-top ${showCard ? 'hide-on-modal' : ''}`}>
           <button 
             className={`lang-btn ${language === 'en' ? 'active' : ''}`}
             onClick={() => changeLanguage('en')}
